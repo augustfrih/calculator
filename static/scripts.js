@@ -60,7 +60,7 @@ buttons.forEach ((button) => {
                 operator = button.id;
                 operatorChosen = true;
             } else {
-                displayValue = operate(parseInt(num1), parseInt(num2), operator)
+                displayValue = roundAccurately((operate(parseInt(num1), parseInt(num2), operator)), 2);
                 num1 = parseInt(displayValue);
                 num2 = 0;
                 operator = button.id;
@@ -73,11 +73,15 @@ buttons.forEach ((button) => {
             num2 = 0;
             operator = "none";
         } else if (button.className == "=") {
-            displayValue = operate(parseInt(num1), parseInt(num2), operator);
-            num1 = parseInt(displayValue);
+            displayValue = roundAccurately((operate(parseInt(num1), parseInt(num2), operator)), 2);
+            num1 = displayValue;
             num2 = 0;
             operator = "none";
         }
         display.innerHTML = displayValue;
     });
 });
+
+function roundAccurately(num, places) {
+    return parseFloat(Math.round(num + 'e' + places) + 'e-' + places);
+}

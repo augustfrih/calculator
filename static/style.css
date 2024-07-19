@@ -6,6 +6,10 @@ button {
     margin: 2px;
 }
 
+.number {
+    background-color: cadetblue;
+}
+
 #calculator {
     background-color: grey;
     display: flex;
